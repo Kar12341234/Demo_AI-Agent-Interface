@@ -22,6 +22,7 @@ import {
   MessageSquare,
   MousePointer2,
   Network,
+  PanelLeft,
   Play,
   Plus,
   RefreshCcw,
@@ -144,7 +145,39 @@ const copy = {
     sync: "同步",
     rotate: "輪換 Key",
     status: "狀態",
-    toastPrefix: "已執行"
+    toastPrefix: "已執行",
+    language: "語言",
+    collapseSidebar: "收起側邊欄",
+    expandSidebar: "展開側邊欄",
+    controlPlane: "AI Agent 控制平面",
+    workforceTitle: "自動化智能體團隊",
+    workflowCanvasTitle: "客戶資料補全自動化",
+    logsStreamTitle: "即時自動化串流",
+    integrationControls: "整合控制",
+    connected: "已連接",
+    disconnected: "未連接",
+    on: "開啟",
+    off: "關閉",
+    success: "成功",
+    runningLabel: "執行中",
+    warnings: "警告",
+    warning: "警告",
+    ready: "待命",
+    done: "完成",
+    healthPassed: "健康檢查完成",
+    customAgentName: "自訂 Agent",
+    customAgentMission: "新的自動化專員，包含審批保護規則",
+    agentStep: "Agent 步驟",
+    copySuffix: "副本",
+    now: "現在",
+    removeSelected: "移除選中節點",
+    triggerWebhook: "Webhook",
+    triggerSchedule: "排程",
+    triggerManual: "手動",
+    terminalConnected: "已連接",
+    terminalReady: "就緒",
+    terminalStandby: "待命",
+    terminalFresh: "已更新"
   },
   hans: {
     nav: {
@@ -208,7 +241,39 @@ const copy = {
     sync: "同步",
     rotate: "轮换 Key",
     status: "状态",
-    toastPrefix: "已执行"
+    toastPrefix: "已执行",
+    language: "语言",
+    collapseSidebar: "收起侧边栏",
+    expandSidebar: "展开侧边栏",
+    controlPlane: "AI Agent 控制平面",
+    workforceTitle: "自动化智能体团队",
+    workflowCanvasTitle: "客户资料补全自动化",
+    logsStreamTitle: "即时自动化串流",
+    integrationControls: "整合控制",
+    connected: "已连接",
+    disconnected: "未连接",
+    on: "开启",
+    off: "关闭",
+    success: "成功",
+    runningLabel: "执行中",
+    warnings: "警告",
+    warning: "警告",
+    ready: "待命",
+    done: "完成",
+    healthPassed: "健康检查完成",
+    customAgentName: "自定义 Agent",
+    customAgentMission: "新的自动化专员，包含审批保护规则",
+    agentStep: "Agent 步骤",
+    copySuffix: "副本",
+    now: "现在",
+    removeSelected: "移除选中节点",
+    triggerWebhook: "Webhook",
+    triggerSchedule: "排程",
+    triggerManual: "手动",
+    terminalConnected: "已连接",
+    terminalReady: "就绪",
+    terminalStandby: "待命",
+    terminalFresh: "已更新"
   },
   en: {
     nav: {
@@ -272,7 +337,39 @@ const copy = {
     sync: "Sync",
     rotate: "Rotate key",
     status: "Status",
-    toastPrefix: "Ran"
+    toastPrefix: "Ran",
+    language: "Language",
+    collapseSidebar: "Collapse sidebar",
+    expandSidebar: "Expand sidebar",
+    controlPlane: "AI Agent Control Plane",
+    workforceTitle: "Autonomous Workforce",
+    workflowCanvasTitle: "Lead Enrichment Automation",
+    logsStreamTitle: "Live Automation Stream",
+    integrationControls: "Integration Controls",
+    connected: "Connected",
+    disconnected: "Disconnected",
+    on: "On",
+    off: "Off",
+    success: "Success",
+    runningLabel: "Running",
+    warnings: "Warnings",
+    warning: "Warning",
+    ready: "Ready",
+    done: "Done",
+    healthPassed: "Health check passed",
+    customAgentName: "Custom Agent",
+    customAgentMission: "New automation specialist with approval guardrails",
+    agentStep: "Agent Step",
+    copySuffix: "Copy",
+    now: "now",
+    removeSelected: "Remove selected node",
+    triggerWebhook: "Webhook",
+    triggerSchedule: "Schedule",
+    triggerManual: "Manual",
+    terminalConnected: "connected",
+    terminalReady: "ready",
+    terminalStandby: "standby",
+    terminalFresh: "fresh"
   }
 } as const;
 
@@ -387,6 +484,132 @@ const initialIntegrations: Integration[] = [
   }
 ];
 
+const agentText: Record<
+  Locale,
+  Record<string, { name: string; mission: string }>
+> = {
+  hant: {
+    sales: {
+      name: "營收 Agent",
+      mission: "潛在客戶評分、帳戶研究、提案生成"
+    },
+    support: {
+      name: "客服 Copilot",
+      mission: "工單分類、SLA 路由、回覆草稿"
+    },
+    research: {
+      name: "研究分析 Agent",
+      mission: "市場掃描、來源摘要、訊號偵測"
+    },
+    ops: {
+      name: "營運自動化 Agent",
+      mission: "後台流程、審批、資料同步"
+    }
+  },
+  hans: {
+    sales: {
+      name: "营收 Agent",
+      mission: "潜在客户评分、账户研究、提案生成"
+    },
+    support: {
+      name: "客服 Copilot",
+      mission: "工单分类、SLA 路由、回复草稿"
+    },
+    research: {
+      name: "研究分析 Agent",
+      mission: "市场扫描、来源摘要、信号侦测"
+    },
+    ops: {
+      name: "运营自动化 Agent",
+      mission: "后台流程、审批、数据同步"
+    }
+  },
+  en: {
+    sales: {
+      name: "Revenue Agent",
+      mission: "Lead scoring, account research, proposal generation"
+    },
+    support: {
+      name: "Support Copilot",
+      mission: "Ticket triage, SLA routing, answer drafting"
+    },
+    research: {
+      name: "Research Analyst",
+      mission: "Market scans, citation summaries, signal detection"
+    },
+    ops: {
+      name: "Ops Automator",
+      mission: "Back-office workflows, approvals, data sync"
+    }
+  }
+};
+
+const nodeText: Record<Locale, Record<string, { title: string; type: string }>> = {
+  hant: {
+    trigger: { title: "Webhook 觸發器", type: "輸入" },
+    classify: { title: "意圖分類器", type: "AI" },
+    tools: { title: "工具路由器", type: "API" },
+    review: { title: "人工審批", type: "審批" }
+  },
+  hans: {
+    trigger: { title: "Webhook 触发器", type: "输入" },
+    classify: { title: "意图分类器", type: "AI" },
+    tools: { title: "工具路由器", type: "API" },
+    review: { title: "人工审批", type: "审批" }
+  },
+  en: {
+    trigger: { title: "Webhook Trigger", type: "Inbound" },
+    classify: { title: "Intent Classifier", type: "AI" },
+    tools: { title: "Tool Router", type: "API" },
+    review: { title: "Human Review", type: "Approval" }
+  }
+};
+
+const logText: Record<Locale, Record<string, string>> = {
+  hant: {
+    run_4821: "已為企業潛在客戶生成資料補全摘要",
+    run_4820: "已發送審批請求到 #sales-ops",
+    run_4819: "遇到速率限制警告，已安排重試",
+    run_4818: "已建立研究簡報並連結來源",
+    health: "已完成工作區健康檢查"
+  },
+  hans: {
+    run_4821: "已为企业潜在客户生成资料补全摘要",
+    run_4820: "已发送审批请求到 #sales-ops",
+    run_4819: "遇到速率限制警告，已安排重试",
+    run_4818: "已建立研究简报并链接来源",
+    health: "已完成工作区健康检查"
+  },
+  en: {
+    run_4821: "Generated enrichment summary for enterprise lead",
+    run_4820: "Posted approval request to #sales-ops",
+    run_4819: "Retry scheduled after rate limit warning",
+    run_4818: "Created research brief and linked sources",
+    health: "Completed workspace health check"
+  }
+};
+
+const integrationText: Record<Locale, Record<string, string>> = {
+  hant: {
+    openai: "Responses API、Agent 推理、function tools",
+    airtable: "CRM 記錄、任務表格、審批隊列",
+    slack: "提醒、審批訊息、團隊指令",
+    notion: "知識庫、SOP 頁面、研究文件"
+  },
+  hans: {
+    openai: "Responses API、Agent 推理、function tools",
+    airtable: "CRM 记录、任务表格、审批队列",
+    slack: "提醒、审批消息、团队指令",
+    notion: "知识库、SOP 页面、研究文件"
+  },
+  en: {
+    openai: "Responses API, agent reasoning, function tools",
+    airtable: "CRM records, task tables, approval queues",
+    slack: "Alerts, approval messages, team commands",
+    notion: "Knowledge base, SOP pages, research docs"
+  }
+};
+
 const statusTone: Record<Status, string> = {
   live: "bg-lime-300/14 text-lime-100 ring-lime-300/25",
   review: "bg-amber-300/14 text-amber-100 ring-amber-300/25",
@@ -400,7 +623,9 @@ function Shell({
   locale,
   setLocale,
   toast,
-  action
+  action,
+  onCreateAgent,
+  onRunCheck
 }: {
   page: PageKey;
   children: React.ReactNode;
@@ -408,21 +633,44 @@ function Shell({
   setLocale: (locale: Locale) => void;
   toast: string;
   action: (label: string) => void;
+  onCreateAgent: () => void;
+  onRunCheck: () => void;
 }) {
   const t = copy[locale];
+  const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
   return (
     <main className="min-h-screen bg-[#0b0b09] text-stone-100">
       <div className="fixed inset-0 -z-10 bg-[radial-gradient(circle_at_20%_10%,rgba(190,242,100,0.13),transparent_30rem),radial-gradient(circle_at_88%_18%,rgba(251,191,36,0.10),transparent_24rem),linear-gradient(145deg,#0b0b09_0%,#15130e_48%,#10110d_100%)]" />
-      <div className="mx-auto grid max-w-7xl gap-4 px-3 py-3 lg:grid-cols-[252px_minmax(0,1fr)] lg:p-5">
+      <div
+        className={`mx-auto grid max-w-7xl gap-4 px-3 py-3 lg:p-5 ${
+          sidebarCollapsed
+            ? "lg:grid-cols-[82px_minmax(0,1fr)]"
+            : "lg:grid-cols-[252px_minmax(0,1fr)]"
+        }`}
+      >
         <aside className="rounded-lg border border-stone-700/60 bg-[#11100d]/88 p-4 shadow-[0_24px_90px_rgba(0,0,0,0.45)] backdrop-blur-xl">
-          <div className="flex items-center gap-3">
+          <div className="flex items-center justify-between gap-3">
+            <div className="flex min-w-0 items-center gap-3">
             <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-lime-300 text-black">
               <Bot className="h-5 w-5" />
             </div>
-            <div>
+            <div className={sidebarCollapsed ? "hidden" : "min-w-0"}>
               <p className="text-sm font-semibold">{t.brand}</p>
               <p className="text-xs text-stone-400">{t.subtitle}</p>
             </div>
+            </div>
+            <button
+              type="button"
+              aria-label={sidebarCollapsed ? t.expandSidebar : t.collapseSidebar}
+              title={sidebarCollapsed ? t.expandSidebar : t.collapseSidebar}
+              onClick={() => {
+                setSidebarCollapsed((value) => !value);
+                action(sidebarCollapsed ? t.expandSidebar : t.collapseSidebar);
+              }}
+              className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-stone-700 text-stone-300 hover:border-lime-300/45 hover:text-lime-100"
+            >
+              <PanelLeft className="h-4 w-4" />
+            </button>
           </div>
 
           <nav className="mt-8 grid gap-2">
@@ -438,22 +686,23 @@ function Shell({
                       ? "bg-lime-300 text-black"
                       : "text-stone-300 hover:bg-stone-800/70 hover:text-white"
                   }`}
+                  title={t.nav[item.page]}
                 >
-                  <span className="flex min-w-0 items-center gap-3">
+                  <span className={`flex min-w-0 items-center gap-3 ${sidebarCollapsed ? "justify-center" : ""}`}>
                     <Icon className="h-4 w-4 shrink-0" />
-                    <span className="truncate">{t.nav[item.page]}</span>
+                    <span className={sidebarCollapsed ? "sr-only" : "truncate"}>{t.nav[item.page]}</span>
                   </span>
-                  <ArrowRight className="h-4 w-4 shrink-0" />
+                  <ArrowRight className={`h-4 w-4 shrink-0 ${sidebarCollapsed ? "hidden" : ""}`} />
                 </Link>
               );
             })}
           </nav>
 
-          <div className="mt-7 rounded-lg border border-amber-300/20 bg-amber-300/8 p-3">
-            <p className="text-xs uppercase tracking-[0.18em] text-amber-200/80">
-              Language
+          <div className={`mt-7 rounded-lg border border-amber-300/20 bg-amber-300/8 p-3 ${sidebarCollapsed ? "px-2" : ""}`}>
+            <p className="truncate text-xs uppercase tracking-[0.18em] text-amber-200/80">
+              {t.language}
             </p>
-            <div className="mt-3 grid grid-cols-3 gap-2">
+            <div className={`mt-3 grid gap-2 ${sidebarCollapsed ? "grid-cols-1" : "grid-cols-3"}`}>
               {[
                 ["hant", "繁"],
                 ["hans", "简"],
@@ -485,7 +734,7 @@ function Shell({
               <div>
                 <div className="inline-flex items-center gap-2 rounded-full border border-lime-300/25 bg-lime-300/10 px-3 py-1 text-xs text-lime-100">
                   <Activity className="h-3.5 w-3.5" />
-                  AI Agent Control Plane
+                  {t.controlPlane}
                 </div>
                 <h1 className="mt-4 text-3xl font-semibold tracking-normal text-white sm:text-4xl">
                   {page === "dashboard" && t.dashboardTitle}
@@ -504,7 +753,7 @@ function Shell({
               <div className="flex flex-wrap gap-2">
                 <button
                   type="button"
-                  onClick={() => action(t.runCheck)}
+                  onClick={onRunCheck}
                   className="inline-flex items-center gap-2 rounded-lg border border-stone-700 bg-stone-900 px-3 py-2 text-sm text-stone-100 hover:border-lime-300/45"
                 >
                   <ShieldCheck className="h-4 w-4 text-lime-200" />
@@ -512,7 +761,7 @@ function Shell({
                 </button>
                 <button
                   type="button"
-                  onClick={() => action(t.createAgent)}
+                  onClick={onCreateAgent}
                   className="inline-flex items-center gap-2 rounded-lg bg-lime-300 px-3 py-2 text-sm font-semibold text-black hover:bg-lime-200"
                 >
                   <Plus className="h-4 w-4" />
@@ -580,14 +829,43 @@ export function AgentWorkspace({ page }: { page: PageKey }) {
     window.setTimeout(() => setToast(""), 1800);
   }
 
+  function createAgent() {
+    setAgents((items) => [
+      ...items,
+      {
+        id: `agent-${items.length + 1}`,
+        name: `${t.customAgentName} ${items.length + 1}`,
+        mission: t.customAgentMission,
+        status: "queued",
+        score: 76,
+        icon: CloudLightning
+      }
+    ]);
+    action(t.createAgent);
+  }
+
+  function runHealthCheck() {
+    setLogs((items) => [
+      {
+        id: `health-${Date.now()}`,
+        source: "AgentForge Monitor",
+        message: logText[locale].health,
+        status: "success",
+        time: t.now
+      },
+      ...items
+    ]);
+    action(t.healthPassed);
+  }
+
   const filteredLogs = useMemo(
     () =>
       logs.filter((log) =>
-        `${log.source} ${log.message} ${log.status}`
+        `${log.source} ${log.message} ${logText[locale][log.id.split("_replay_")[0]] ?? ""} ${log.status}`
           .toLowerCase()
           .includes(query.toLowerCase())
       ),
-    [logs, query]
+    [locale, logs, query]
   );
 
   return (
@@ -597,6 +875,8 @@ export function AgentWorkspace({ page }: { page: PageKey }) {
       setLocale={setLocale}
       toast={toast}
       action={action}
+      onCreateAgent={createAgent}
+      onRunCheck={runHealthCheck}
     >
       {page === "dashboard" ? (
         <Dashboard
@@ -662,6 +942,18 @@ function Dashboard({
   action: (label: string) => void;
 }) {
   const t = copy[locale];
+  const getAgentDisplay = (agent: Agent) => {
+    const customNumber = agent.id.startsWith("agent-")
+      ? agent.id.replace("agent-", "")
+      : "";
+
+    return (
+      agentText[locale][agent.id] ?? {
+        name: `${t.customAgentName} ${customNumber}`,
+        mission: t.customAgentMission
+      }
+    );
+  };
   const metrics = [
     { label: t.activeAgents, value: agents.filter((agent) => agent.status === "live").length, icon: Bot },
     { label: t.completedRuns, value: period === "today" ? 128 : period === "week" ? 842 : 3168, icon: ListChecks },
@@ -694,7 +986,7 @@ function Dashboard({
           <div className="flex flex-wrap items-center justify-between gap-3">
             <div>
               <p className="text-sm text-stone-400">{t.agentOps}</p>
-              <h2 className="text-xl font-semibold text-white">Autonomous Workforce</h2>
+              <h2 className="text-xl font-semibold text-white">{t.workforceTitle}</h2>
             </div>
             <button
               type="button"
@@ -703,8 +995,8 @@ function Dashboard({
                   ...items,
                   {
                     id: `agent-${items.length + 1}`,
-                    name: `Custom Agent ${items.length + 1}`,
-                    mission: "New automation specialist with approval guardrails",
+                    name: `${t.customAgentName} ${items.length + 1}`,
+                    mission: t.customAgentMission,
                     status: "queued",
                     score: 76,
                     icon: CloudLightning
@@ -722,6 +1014,7 @@ function Dashboard({
           <div className="mt-5 grid gap-3 md:grid-cols-2">
             {agents.map((agent) => {
               const Icon = agent.icon;
+              const display = getAgentDisplay(agent);
               return (
                 <article key={agent.id} className="rounded-lg border border-stone-700/65 bg-black/18 p-4">
                   <div className="flex items-start justify-between gap-3">
@@ -730,13 +1023,13 @@ function Dashboard({
                         <Icon className="h-5 w-5" />
                       </div>
                       <div>
-                        <h3 className="text-sm font-semibold text-white">{agent.name}</h3>
+                        <h3 className="text-sm font-semibold text-white">{display.name}</h3>
                         <StatusBadge status={agent.status} locale={locale} />
                       </div>
                     </div>
                     <span className="font-mono text-sm text-lime-200">{agent.score}%</span>
                   </div>
-                  <p className="mt-4 min-h-12 text-sm leading-6 text-stone-400">{agent.mission}</p>
+                  <p className="mt-4 min-h-12 text-sm leading-6 text-stone-400">{display.mission}</p>
                   <div className="mt-4 flex gap-2">
                     <button
                       type="button"
@@ -746,7 +1039,7 @@ function Dashboard({
                             item.id === agent.id ? { ...item, status: "live", score: Math.min(99, item.score + 3) } : item
                           )
                         );
-                        action(`${t.deploy} ${agent.name}`);
+                        action(`${t.deploy} ${display.name}`);
                       }}
                       className="flex flex-1 items-center justify-center gap-2 rounded-md bg-lime-300 px-3 py-2 text-xs font-semibold text-black"
                     >
@@ -761,7 +1054,7 @@ function Dashboard({
                             item.id === agent.id ? { ...item, status: "paused" } : item
                           )
                         );
-                        action(`${t.pause} ${agent.name}`);
+                        action(`${t.pause} ${display.name}`);
                       }}
                       className="flex flex-1 items-center justify-center gap-2 rounded-md border border-stone-700 px-3 py-2 text-xs text-stone-200"
                     >
@@ -855,6 +1148,35 @@ function WorkflowBuilder({
   const t = copy[locale];
   const selected = nodes.find((node) => node.id === selectedNode) ?? nodes[0];
   const triggers = ["Webhook", "Schedule", "Manual"];
+  const triggerLabels: Record<string, string> = {
+    Webhook: t.triggerWebhook,
+    Schedule: t.triggerSchedule,
+    Manual: t.triggerManual
+  };
+  const getNodeDisplay = (node: NodeItem) => {
+    const baseId = node.id.split("-copy-")[0];
+    const dynamicNumber = node.id.startsWith("node-")
+      ? node.id.replace("node-", "").split("-")[0]
+      : "";
+    const baseText =
+      nodeText[locale][baseId] ?? {
+        title: `${t.agentStep} ${dynamicNumber}`,
+        type: node.type
+      };
+
+    return {
+      title: node.id.includes("-copy-")
+        ? `${baseText.title} ${t.copySuffix}`
+        : baseText.title,
+      type: baseText.type,
+      state:
+        node.state === "running"
+          ? t.runningLabel
+          : node.state === "done"
+            ? t.done
+            : t.ready
+    };
+  };
 
   function moveNode(deltaX: number, deltaY: number) {
     setNodes((items) =>
@@ -876,8 +1198,8 @@ function WorkflowBuilder({
       <Panel className="min-h-[620px] p-4">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div>
-            <p className="text-sm text-stone-400">{t.trigger}: {trigger}</p>
-            <h2 className="text-xl font-semibold text-white">Lead Enrichment Automation</h2>
+            <p className="text-sm text-stone-400">{t.trigger}: {triggerLabels[trigger]}</p>
+            <h2 className="text-xl font-semibold text-white">{t.workflowCanvasTitle}</h2>
           </div>
           <div className="flex flex-wrap gap-2">
             <button
@@ -885,7 +1207,7 @@ function WorkflowBuilder({
               onClick={() => {
                 const next = {
                   id: `node-${nodes.length + 1}`,
-                  title: `Agent Step ${nodes.length + 1}`,
+                  title: `${t.agentStep} ${nodes.length + 1}`,
                   type: "Action",
                   x: 18 + nodes.length * 9,
                   y: 52,
@@ -918,13 +1240,15 @@ function WorkflowBuilder({
 
         <div className="relative mt-5 h-[500px] overflow-hidden rounded-lg border border-stone-700 bg-[linear-gradient(rgba(255,255,255,0.055)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.055)_1px,transparent_1px)] bg-[size:32px_32px]">
           <div className="absolute left-[9%] right-[12%] top-[33%] h-1 rounded-full bg-gradient-to-r from-lime-300 via-amber-300 to-rose-300" />
-          {nodes.map((node) => (
+          {nodes.map((node) => {
+            const display = getNodeDisplay(node);
+            return (
             <button
               key={node.id}
               type="button"
               onClick={() => {
                 setSelectedNode(node.id);
-                action(node.title);
+                action(display.title);
               }}
               className={`absolute w-44 rounded-lg border p-3 text-left transition ${
                 selectedNode === node.id
@@ -939,20 +1263,23 @@ function WorkflowBuilder({
                 {node.type === "API" ? <Code2 className="h-4 w-4" /> : null}
                 {node.type === "Approval" ? <ShieldCheck className="h-4 w-4" /> : null}
                 {node.type === "Action" ? <MousePointer2 className="h-4 w-4" /> : null}
-                {node.type}
+                {display.type}
               </span>
-              <span className="mt-2 block text-sm font-semibold">{node.title}</span>
-              <span className="mt-2 block text-xs opacity-70">{node.state}</span>
+              <span className="mt-2 block text-sm font-semibold">{display.title}</span>
+              <span className="mt-2 block text-xs opacity-70">{display.state}</span>
             </button>
-          ))}
+          );
+          })}
         </div>
       </Panel>
 
       <Panel className="p-4">
         <h2 className="text-lg font-semibold text-white">{t.selectedNode}</h2>
         <div className="mt-4 rounded-lg border border-stone-700 bg-black/20 p-3">
-          <p className="text-sm font-semibold text-lime-100">{selected.title}</p>
-          <p className="mt-1 text-xs text-stone-400">{selected.type} / {selected.state}</p>
+          <p className="text-sm font-semibold text-lime-100">{getNodeDisplay(selected).title}</p>
+          <p className="mt-1 text-xs text-stone-400">
+            {getNodeDisplay(selected).type} / {getNodeDisplay(selected).state}
+          </p>
         </div>
         <div className="mt-4 grid grid-cols-3 gap-2">
           {triggers.map((item) => (
@@ -961,13 +1288,13 @@ function WorkflowBuilder({
               type="button"
               onClick={() => {
                 setTrigger(item);
-                action(item);
+                action(triggerLabels[item]);
               }}
               className={`rounded-md px-2 py-2 text-xs ${
                 trigger === item ? "bg-amber-300 text-black" : "bg-stone-900 text-stone-300"
               }`}
             >
-              {item}
+              {triggerLabels[item]}
             </button>
           ))}
         </div>
@@ -1013,7 +1340,13 @@ function WorkflowBuilder({
           <button
             type="button"
             onClick={() => {
-              const clone = { ...selected, id: `${selected.id}-copy-${nodes.length}`, title: `${selected.title} Copy`, x: selected.x + 7, y: selected.y + 7 };
+              const clone = {
+                ...selected,
+                id: `${selected.id}-copy-${nodes.length}`,
+                title: `${getNodeDisplay(selected).title} ${t.copySuffix}`,
+                x: selected.x + 7,
+                y: selected.y + 7
+              };
               setNodes((items) => [...items, clone]);
               setSelectedNode(clone.id);
               action(t.duplicate);
@@ -1022,6 +1355,22 @@ function WorkflowBuilder({
           >
             <GitBranch className="h-4 w-4" />
             {t.duplicate}
+          </button>
+          <button
+            type="button"
+            onClick={() => {
+              if (nodes.length <= 1) {
+                action(t.removeSelected);
+                return;
+              }
+              setNodes((items) => items.filter((node) => node.id !== selectedNode));
+              setSelectedNode(nodes.find((node) => node.id !== selectedNode)?.id ?? nodes[0].id);
+              action(t.removeSelected);
+            }}
+            className="inline-flex items-center justify-center gap-2 rounded-lg border border-rose-300/30 px-3 py-2 text-sm text-rose-100"
+          >
+            <Unplug className="h-4 w-4" />
+            {t.remove}
           </button>
         </div>
       </Panel>
@@ -1047,12 +1396,23 @@ function LogsPage({
   action: (label: string) => void;
 }) {
   const t = copy[locale];
+  const getLogMessage = (log: LogItem) => {
+    const baseId = log.id.split("_replay_")[0];
+    return logText[locale][baseId] ?? log.message;
+  };
+  const getLogStatus = (status: LogItem["status"]) =>
+    status === "success"
+      ? t.success
+      : status === "running"
+        ? t.runningLabel
+        : t.warning;
+
   return (
     <Panel className="p-4">
       <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
         <div>
           <p className="text-sm text-stone-400">{t.apiActivity}</p>
-          <h2 className="text-xl font-semibold text-white">Live Automation Stream</h2>
+          <h2 className="text-xl font-semibold text-white">{t.logsStreamTitle}</h2>
         </div>
         <div className="flex flex-wrap gap-2">
           <label className="flex min-w-[240px] items-center gap-2 rounded-lg border border-stone-700 bg-black/20 px-3 py-2 text-sm text-stone-300">
@@ -1094,7 +1454,12 @@ function LogsPage({
           >
             <span className="font-mono text-xs text-stone-400">{log.time}</span>
             <span className="text-sm font-semibold text-white">{log.source}</span>
-            <span className="text-sm text-stone-300">{log.message}</span>
+            <span className="text-sm text-stone-300">
+              {getLogMessage(log)}
+              <span className="ml-2 rounded-full bg-stone-900 px-2 py-0.5 text-xs text-stone-400">
+                {getLogStatus(log.status)}
+              </span>
+            </span>
             <div className="flex gap-2">
               <button
                 type="button"
@@ -1103,7 +1468,7 @@ function LogsPage({
                     {
                       ...log,
                       id: `${log.id}_replay_${items.length}`,
-                      time: "now",
+                      time: t.now,
                       status: "running"
                     },
                     ...items
@@ -1135,9 +1500,9 @@ function LogsPage({
 
       <div className="mt-4 grid gap-3 md:grid-cols-3">
         {[
-          ["Success", rawLogs.filter((log) => log.status === "success").length],
-          ["Running", rawLogs.filter((log) => log.status === "running").length],
-          ["Warnings", rawLogs.filter((log) => log.status === "warning").length]
+          [t.success, rawLogs.filter((log) => log.status === "success").length],
+          [t.runningLabel, rawLogs.filter((log) => log.status === "running").length],
+          [t.warnings, rawLogs.filter((log) => log.status === "warning").length]
         ].map(([label, value]) => (
           <div key={label} className="rounded-lg border border-stone-700 bg-black/18 p-4">
             <p className="text-sm text-stone-400">{label}</p>
@@ -1177,15 +1542,17 @@ function IntegrationsPage({
                     <div>
                       <h2 className="text-base font-semibold text-white">{integration.name}</h2>
                       <p className="text-xs text-stone-400">
-                        {integration.connected ? "Connected" : "Disconnected"}
+                        {integration.connected ? t.connected : t.disconnected}
                       </p>
                     </div>
                   </div>
                   <span className={`rounded-full px-2 py-1 text-xs ${integration.connected ? "bg-lime-300/12 text-lime-100" : "bg-stone-800 text-stone-300"}`}>
-                    {integration.connected ? "Live" : "Off"}
+                    {integration.connected ? t.on : t.off}
                   </span>
                 </div>
-                <p className="mt-4 min-h-12 text-sm leading-6 text-stone-400">{integration.description}</p>
+                <p className="mt-4 min-h-12 text-sm leading-6 text-stone-400">
+                  {integrationText[locale][integration.id] ?? integration.description}
+                </p>
                 <div className="mt-4 grid grid-cols-2 gap-2">
                   <button
                     type="button"
@@ -1220,7 +1587,7 @@ function IntegrationsPage({
       </Panel>
 
       <Panel className="p-4">
-        <h2 className="text-lg font-semibold text-white">Integration Controls</h2>
+        <h2 className="text-lg font-semibold text-white">{t.integrationControls}</h2>
         <div className="mt-4 grid gap-2">
           <button
             type="button"
@@ -1249,10 +1616,10 @@ function IntegrationsPage({
         </div>
         <div className="mt-5 rounded-lg border border-stone-700 bg-black/20 p-4">
           <p className="font-mono text-xs leading-6 text-lime-100">
-            OPENAI_STATUS=connected<br />
-            AIRTABLE_SYNC=ready<br />
-            SLACK_EVENTS=standby<br />
-            NOTION_INDEX=fresh
+            OPENAI_STATUS={t.terminalConnected}<br />
+            AIRTABLE_SYNC={t.terminalReady}<br />
+            SLACK_EVENTS={t.terminalStandby}<br />
+            NOTION_INDEX={t.terminalFresh}
           </p>
         </div>
       </Panel>

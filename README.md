@@ -14,11 +14,12 @@ A modern AI Agent Workspace demo built for Fiverr / Upwork portfolio presentatio
 
 - Dark high-end AI SaaS interface with a new graphite, lime, amber, and rose palette
 - Traditional Chinese, Simplified Chinese, and English UI switching
+- Collapsible sidebar navigation for a more realistic SaaS workspace
 - Dashboard page for AI agents, workflow status, and analytics controls
 - Workflow Builder page with trigger selection, automation nodes, drag-like positioning controls, simulation, duplication, and save actions
 - Logs page with searchable execution history, API activity, replay actions, resolve actions, and export feedback
 - Integrations page for OpenAI, Airtable, Slack, and Notion connection toggles, tests, sync, key rotation, and status controls
-- Every visible button performs an in-demo action with state changes or command feedback
+- Every visible button performs an in-demo action with state changes, navigation, or command feedback
 
 ## Getting Started
 

@@ -1,48 +1,56 @@
-# AI Agent Interface Demo
+# AI Workflow Automation Platform
 
-A modern AI Agent Workspace demo built for Fiverr / Upwork portfolio presentation. It now uses a multi-page SaaS structure with interactive controls, multilingual UI switching, workflow building, logs, and integration management.
+Modern AI workflow automation dashboard built with React, Next.js, TypeScript, Tailwind CSS, and scalable SaaS UI architecture.
+
+## Features
+
+- AI workflow automation dashboard
+- AI agents status overview
+- Automation pipeline monitoring
+- Workflow execution logs
+- Task and activity tracking
+- Integration-ready interface
+- Analytics and usage dashboard
+- Responsive SaaS admin UI
+- Modular frontend architecture
 
 ## Tech Stack
 
-- Next.js App Router
+- React
+- Next.js
 - TypeScript
 - Tailwind CSS
-- Responsive multi-page dashboard UI
-- Lucide icons
+- Recharts
+- SaaS dashboard components
 
-## Demo Highlights
+## Workflow System
 
-- Dark high-end AI SaaS interface with a new graphite, lime, amber, and rose palette
-- Traditional Chinese, Simplified Chinese, and English UI switching
-- Collapsible sidebar navigation for a more realistic SaaS workspace
-- Dashboard page for AI agents, workflow status, and analytics controls
-- Workflow Builder page with trigger selection, automation nodes, drag-like positioning controls, simulation, duplication, and save actions
-- Logs page with searchable execution history, API activity, replay actions, resolve actions, and export feedback
-- Integrations page for OpenAI, Airtable, Slack, and Notion connection toggles, tests, sync, key rotation, and status controls
-- Every visible button performs an in-demo action with state changes, navigation, or command feedback
+The platform is designed to visualize and manage AI-powered workflows, including automation status, execution history, agent activity, and operational analytics.
 
-## Getting Started
+## Integrations Concept
 
-Install dependencies:
+Designed for future integrations with:
 
-```bash
-npm install
-```
+- OpenAI
+- Claude
+- Airtable
+- Slack
+- Notion
+- Supabase
 
-Run the development server:
+## Use Cases
 
-```bash
-npm run dev
-```
+- AI workflow platforms
+- Internal automation tools
+- AI SaaS dashboards
+- Operations dashboards
+- Agent monitoring systems
+- Startup MVPs
 
-Open [http://localhost:3000](http://localhost:3000) in your browser.
+## Screenshots
 
-Build for production:
+Add demo screenshots here.
 
-```bash
-npm run build
-```
+## Status
 
-## Portfolio Positioning
-
-This demo is designed to present AI SaaS product UI capabilities, including workflow orchestration, intelligent dashboards, automation status tracking, business tool integrations, multilingual SaaS UI, and interactive product prototypes. It can be adapted into client projects such as internal AI assistants, sales automation tools, customer support copilots, research agents, analytics assistants, or custom agent operations consoles.
+Portfolio demo project for AI SaaS, workflow automation, and internal tool development.

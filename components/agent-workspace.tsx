@@ -641,23 +641,39 @@ function Shell({
   return (
     <main className="min-h-screen bg-[#0b0b09] text-stone-100">
       <div className="fixed inset-0 -z-10 bg-[radial-gradient(circle_at_20%_10%,rgba(190,242,100,0.13),transparent_30rem),radial-gradient(circle_at_88%_18%,rgba(251,191,36,0.10),transparent_24rem),linear-gradient(145deg,#0b0b09_0%,#15130e_48%,#10110d_100%)]" />
-      <div
-        className={`mx-auto grid max-w-7xl gap-4 px-3 py-3 lg:p-5 ${
-          sidebarCollapsed
-            ? "lg:grid-cols-[82px_minmax(0,1fr)]"
-            : "lg:grid-cols-[252px_minmax(0,1fr)]"
-        }`}
-      >
-        <aside className="rounded-lg border border-stone-700/60 bg-[#11100d]/88 p-4 shadow-[0_24px_90px_rgba(0,0,0,0.45)] backdrop-blur-xl">
-          <div className="flex items-center justify-between gap-3">
-            <div className="flex min-w-0 items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-lime-300 text-black">
-              <Bot className="h-5 w-5" />
-            </div>
-            <div className={sidebarCollapsed ? "hidden" : "min-w-0"}>
-              <p className="text-sm font-semibold">{t.brand}</p>
-              <p className="text-xs text-stone-400">{t.subtitle}</p>
-            </div>
+      <div className="mx-auto flex max-w-7xl flex-col gap-4 px-3 py-3 lg:flex-row lg:p-5">
+        <aside
+          className={`overflow-hidden rounded-lg border border-stone-700/60 bg-[#11100d]/88 shadow-[0_24px_90px_rgba(0,0,0,0.45)] backdrop-blur-xl transition-[width,padding] duration-500 ease-out ${
+            sidebarCollapsed ? "p-3 lg:w-[88px]" : "p-4 lg:w-[252px]"
+          }`}
+        >
+          <div
+            className={`flex gap-3 transition-all duration-500 ${
+              sidebarCollapsed
+                ? "flex-col items-center justify-center"
+                : "items-center justify-between"
+            }`}
+          >
+            <div
+              className={`flex min-w-0 items-center transition-all duration-500 ${
+                sidebarCollapsed ? "justify-center" : "gap-3"
+              }`}
+            >
+              <div
+                className={`flex shrink-0 items-center justify-center bg-lime-300 text-black shadow-[0_0_28px_rgba(190,242,100,0.22)] transition-all duration-500 ${
+                  sidebarCollapsed ? "h-12 w-12 rounded-2xl" : "h-10 w-10 rounded-lg"
+                }`}
+              >
+                <Bot className="h-5 w-5" />
+              </div>
+              <div
+                className={`min-w-0 overflow-hidden transition-all duration-500 ${
+                  sidebarCollapsed ? "max-w-0 opacity-0" : "max-w-[150px] opacity-100"
+                }`}
+              >
+                <p className="whitespace-nowrap text-sm font-semibold">{t.brand}</p>
+                <p className="whitespace-nowrap text-xs text-stone-400">{t.subtitle}</p>
+              </div>
             </div>
             <button
               type="button"
@@ -667,9 +683,15 @@ function Shell({
                 setSidebarCollapsed((value) => !value);
                 action(sidebarCollapsed ? t.expandSidebar : t.collapseSidebar);
               }}
-              className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-stone-700 text-stone-300 hover:border-lime-300/45 hover:text-lime-100"
+              className={`flex shrink-0 items-center justify-center border border-stone-700 bg-black/20 text-stone-300 transition-all duration-300 hover:border-lime-300/45 hover:text-lime-100 ${
+                sidebarCollapsed ? "h-10 w-10 rounded-2xl" : "h-9 w-9 rounded-lg"
+              }`}
             >
-              <PanelLeft className="h-4 w-4" />
+              <PanelLeft
+                className={`h-4 w-4 transition-transform duration-500 ${
+                  sidebarCollapsed ? "rotate-180" : ""
+                }`}
+              />
             </button>
           </div>
 
@@ -685,21 +707,39 @@ function Shell({
                     active
                       ? "bg-lime-300 text-black"
                       : "text-stone-300 hover:bg-stone-800/70 hover:text-white"
-                  }`}
+                  } ${sidebarCollapsed ? "h-12 justify-center rounded-2xl px-0" : ""}`}
                   title={t.nav[item.page]}
                 >
-                  <span className={`flex min-w-0 items-center gap-3 ${sidebarCollapsed ? "justify-center" : ""}`}>
+                  <span className="flex min-w-0 items-center gap-3">
                     <Icon className="h-4 w-4 shrink-0" />
-                    <span className={sidebarCollapsed ? "sr-only" : "truncate"}>{t.nav[item.page]}</span>
+                    <span
+                      className={`overflow-hidden whitespace-nowrap transition-all duration-500 ${
+                        sidebarCollapsed ? "max-w-0 opacity-0" : "max-w-[150px] opacity-100"
+                      }`}
+                    >
+                      {t.nav[item.page]}
+                    </span>
                   </span>
-                  <ArrowRight className={`h-4 w-4 shrink-0 ${sidebarCollapsed ? "hidden" : ""}`} />
+                  <ArrowRight
+                    className={`h-4 w-4 shrink-0 transition-all duration-500 ${
+                      sidebarCollapsed ? "w-0 opacity-0" : "opacity-100"
+                    }`}
+                  />
                 </Link>
               );
             })}
           </nav>
 
-          <div className={`mt-7 rounded-lg border border-amber-300/20 bg-amber-300/8 p-3 ${sidebarCollapsed ? "px-2" : ""}`}>
-            <p className="truncate text-xs uppercase tracking-[0.18em] text-amber-200/80">
+          <div
+            className={`mt-7 rounded-lg border border-amber-300/20 bg-amber-300/8 transition-all duration-500 ${
+              sidebarCollapsed ? "p-2" : "p-3"
+            }`}
+          >
+            <p
+              className={`truncate text-xs uppercase tracking-[0.18em] text-amber-200/80 transition-all duration-500 ${
+                sidebarCollapsed ? "text-center tracking-normal" : ""
+              }`}
+            >
               {t.language}
             </p>
             <div className={`mt-3 grid gap-2 ${sidebarCollapsed ? "grid-cols-1" : "grid-cols-3"}`}>
@@ -719,7 +759,7 @@ function Shell({
                     locale === value
                       ? "bg-amber-300 text-black"
                       : "bg-black/25 text-stone-300 ring-1 ring-stone-700 hover:bg-stone-800"
-                  }`}
+                  } ${sidebarCollapsed ? "h-10 rounded-xl px-0" : ""}`}
                 >
                   {label}
                 </button>
@@ -728,7 +768,7 @@ function Shell({
           </div>
         </aside>
 
-        <section className="grid gap-4">
+        <section className="grid min-w-0 flex-1 gap-4">
           <header className="rounded-lg border border-stone-700/60 bg-[#11100d]/82 p-4 shadow-[0_24px_90px_rgba(0,0,0,0.35)] backdrop-blur-xl">
             <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
               <div>

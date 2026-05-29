@@ -54,3 +54,15 @@ Add demo screenshots here.
 ## Status
 
 Portfolio demo project for AI SaaS, workflow automation, and internal tool development.
+
+## Keywords
+ChatGPT SaaS
+AI SaaS
+Startup MVP
+AI Dashboard
+React SaaS
+Next.js SaaS
+AI Web App
+OpenAI Interface
+SaaS Startup
+AI Product

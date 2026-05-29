@@ -56,13 +56,11 @@ Add demo screenshots here.
 Portfolio demo project for AI SaaS, workflow automation, and internal tool development.
 
 ## Keywords
-ChatGPT SaaS
-AI SaaS
-Startup MVP
+AI Agent
+AI Assistant
 AI Dashboard
-React SaaS
-Next.js SaaS
-AI Web App
-OpenAI Interface
-SaaS Startup
-AI Product
+Agent Interface
+OpenAI UI
+LLM Interface
+React Dashboard
+Next.js App

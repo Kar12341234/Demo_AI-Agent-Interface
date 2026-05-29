@@ -1,4 +1,4 @@
-# AI Workflow Automation Platform
+# AI Agent Interface | Modern AI Assistant Dashboard
 
 Modern AI workflow automation dashboard built with React, Next.js, TypeScript, Tailwind CSS, and scalable SaaS UI architecture.
 
